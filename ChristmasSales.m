@@ -1,4 +1,4 @@
-% Create Figure 14
+% Create Figure 15
 clear
 close all
 load ChristmasSales.mat
@@ -27,7 +27,7 @@ RAWH1=mcdCorAna(Ntable,'plots',0,'findEmpiricalEnvelope',findEmp,'bdp',0.5,'msg'
 outFSH1=FSCorAna(RAWH1,'plots',0,'msg',0,'StoreSim',false,'conflev',conflevSim);
 
 
-%% Create Figure 14
+%% Create Figure 15
 lwdreal=1.5;
 subplot(2,2,1)
 plot(outFSH0.ine(:,1),outFSH0.ine(:,2),'LineWidth',lwdreal)
