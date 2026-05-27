@@ -1,5 +1,6 @@
 %% Create figures 6-10
 % old file was figures2024rev1
+prin=0;
 load ExportShifts.mat
 Ntable=ExportShifts;
 n=sum(Ntable{:,:},"all");
@@ -49,7 +50,7 @@ plots.minMD = true;
 plots.inertia = false;
 plots.addRowNames = true;
 
-outFSH0=FSCorAna(RAWH0,'plots',plots,'init',round(n*0.25),'conflev',[0.05 0.95],'resc',false);
+outFSH0=FSCorAna(RAWH0,'plots',plots,'init',round(n*0.25),'conflev',[0.05 0.95],'resc',false,'msg',0);
 title('')
 ylabel('Minimum MD')
 h = findobj('Type','figure','Tag','pl_in');   % find figure handles with that tag
@@ -177,8 +178,6 @@ line(gine(:,1),gine(:,2),'LineWidth',lwdenv,'LineStyle','-.','Color',[0.2 0.8 0.
 line(gine(:,1),gine(:,4),'LineWidth',lwdenv,'LineStyle','-.','Color',[0.2 0.8 0.4],'tag','env');
 ylabel('Inertia')
 xlabel('Subset size m')
-prin=0;
 if prin==1
     print -depsc figs\I6.eps;
 end
-
