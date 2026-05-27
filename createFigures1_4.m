@@ -3,8 +3,8 @@ rng(10)
 clear
 format bank
 
-
-FigNumber=4;
+% Fig. number you want to plot
+FigNumber=1;
 
 if FigNumber==1
 
@@ -264,6 +264,9 @@ line(gine(:,1),gine(:,2),'LineWidth',lwdenv,'LineStyle','-.','Color',[0.2 0.8 0.
 line(gine(:,1),gine(:,4),'LineWidth',lwdenv,'LineStyle','-.','Color',[0.2 0.8 0.4],'tag','env');
 xlabel('Subset size m')
 ylabel('Inertia')
+
+ax=gca;
+ax.YAxis.Exponent = 0;
 
 prin=0;
 if prin==1
