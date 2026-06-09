@@ -1,5 +1,5 @@
 
-%% Figures 11-13
+%% Figures 11-14
 close all
 clear
 load clothes
@@ -25,8 +25,6 @@ RAWH0=mcdCorAna(Ntable,'plots',0,'findEmpiricalEnvelope',findEmp, ...
     'conflev',conflev,'bdp',0.5);
 
 %%  Under H1
-
-
 % Example of findEmpiricalEnvelope a struct
 findEmp=struct;
 % Generate nsimul contingency tables
@@ -41,17 +39,9 @@ conflev=1-0.01/I;
 RAWH1=mcdCorAna(Ntable,'plots',0,'findEmpiricalEnvelope',findEmp, ...
     'conflev',conflev,'bdp',0.5);
 
-
-
-
 %% Figure 11 left panel: under H0 before rescaling
-
-out=FSCorAna(RAWH0,'plots',1,'init',round(n*0.25),'conflev',[0.05 0.95],'resc',false);
-% Replace 'myTag' with the tag you are looking for
-h = findall(0, 'Type', 'figure', 'Tag', 'pl_in');
-if ~isempty(h)
-    close(h)
-end 
+plots=struct('minMD',true,'inertia',false); 
+out=FSCorAna(RAWH0,'plots',plots,'init',round(n*0.25),'conflev', 0.95,'resc',false);
 ylabel('Minimum MD')
 set(gcf,'Name','Figure 11 (left panel) simH0 without rescaling')
 
@@ -62,12 +52,8 @@ end
 
 
 %% Figure 11 right panel: under H1 without rescaling
-
-out=FSCorAna(RAWH1,'plots',1,'init',round(n*0.25),'conflev',[0.05 0.95],'resc',false);
-h = findall(0, 'Type', 'figure', 'Tag', 'pl_in');
-if ~isempty(h)
-    close(h)
-end 
+plots=struct('minMD',true,'inertia',false); 
+out=FSCorAna(RAWH1,'plots',plots,'init',round(n*0.25),'conflev',0.95,'resc',false);
 ylabel('Minimum MD')
 set(gcf,'Name','Figure 11 (right panel) simH1 without rescaling')
 
@@ -78,19 +64,15 @@ if prin==1
 end
 
 %% Figure 12: H1 with rescaling
-
-out=FSCorAna(RAWH1,'plots',1,'init',round(n*0.25),'conflev',[0.05 0.95],'resc',true);
-h = findall(0, 'Type', 'figure', 'Tag', 'pl_in');
-if ~isempty(h)
-    close(h)
-end 
+plots=struct('minMD',true,'inertia',false,'addBonfLine',true);
+out=FSCorAna(RAWH1,'plots',plots,'init',round(n*0.25),'conflev',[0.05 0.9 0.95 0.99 0.9],'resc',true);
 ylabel('Minimum MD')
 set(gcf,'Name','Figure 12 simH1 with rescaling')
 
 title('')
 if prin==1
     % print to postscript
-    print -depsc figs2024\ClminMDH1resc.eps;
+    print -depsc ClminMDH1resc.eps;
 end
 
 %% Figure 13: Monitoring MD
