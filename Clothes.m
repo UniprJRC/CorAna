@@ -41,7 +41,8 @@ RAWH1=mcdCorAna(Ntable,'plots',0,'findEmpiricalEnvelope',findEmp, ...
 
 %% Figure 11 left panel: under H0 before rescaling
 plots=struct('minMD',true,'inertia',false); 
-out=FSCorAna(RAWH0,'plots',plots,'init',round(n*0.25),'conflev', 0.95,'resc',false);
+out=FSCorAna(RAWH0,'plots',plots,'init',round(n*0.25), ...
+    'conflev', 0.95,'resc',false,'msg',0);
 ylabel('Minimum MD')
 set(gcf,'Name','Figure 11 (left panel) simH0 without rescaling')
 
@@ -53,7 +54,8 @@ end
 
 %% Figure 11 right panel: under H1 without rescaling
 plots=struct('minMD',true,'inertia',false); 
-out=FSCorAna(RAWH1,'plots',plots,'init',round(n*0.25),'conflev',0.95,'resc',false);
+out=FSCorAna(RAWH1,'plots',plots,'init',round(n*0.25), ...
+    'conflev',0.95,'resc',false,'msg',0);
 ylabel('Minimum MD')
 set(gcf,'Name','Figure 11 (right panel) simH1 without rescaling')
 
@@ -65,7 +67,8 @@ end
 
 %% Figure 12: H1 with rescaling
 plots=struct('minMD',true,'inertia',false,'addBonfLine',true);
-out=FSCorAna(RAWH1,'plots',plots,'init',round(n*0.25),'conflev',[0.05 0.9 0.95 0.99 0.9],'resc',true);
+out=FSCorAna(RAWH1,'plots',plots,'init',round(n*0.25), ...
+    'conflev',[0.05 0.9 0.95 0.99],'resc',true,'msg',0);
 ylabel('Minimum MD')
 set(gcf,'Name','Figure 12 simH1 with rescaling')
 
